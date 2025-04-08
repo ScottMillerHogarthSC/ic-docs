@@ -1,0 +1,353 @@
+@charset "UTF-8";
+/* CSS Document Common Elements */
+
+body{
+    position: absolute;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    background: #000;
+    width:100%;
+    height:100%;
+
+    /* below improves consistancey of font rendering across browsers */
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+
+    /* below stops FireFox rendering copy too heavily */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix to stop Mobile Safari automatically scaling text - http://bit.ly/1mumu5F */
+@media screen and (max-device-width: 480px) {
+  body {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+
+/* Browser Support: Chrome:5+, Safari:5.1+, Firefox:3.6+, Opera:11.5+, IE:9+, Android:4.4+, iOS:5.1+ */
+@font-face {
+    font-family: 'ExampleFont';
+    src: url('../fonts/ExampleFont-BoldItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#container {
+    position:absolute;
+    left: 0;
+    top: 0;
+    width:auto;
+    height:auto;
+    margin:auto;
+    overflow: hidden;
+    aspect-ratio: 3600 / 2008;
+    /* default font-size set here then other sizes set % based of this master value:*/
+    font-size: 13px;
+}
+
+.abs {
+    position:absolute;
+    left: 0;
+    top: 0;
+}
+
+.rel {
+    position:relative;
+    left: 0;
+    top: 0;
+}
+
+.full {
+    width:100%;
+    height:100%;
+}
+
+.full-w {
+    width:100%;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+p{
+    margin: 0 0 1em;
+}
+
+.hidden {
+    opacity:0;
+    filter:alpha(opacity=0);
+}
+
+#exit_btn {
+    cursor:pointer;
+    z-index:400;
+    background-color:#FFFFFF;
+    opacity:0;
+    filter:alpha(opacity=0);
+}
+
+#keyline {
+    z-index:399;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    border: 1px solid #666666;
+    background-color:transparent;
+}
+
+#imgMain {
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+
+#background {
+    background: #000;
+}
+
+.block {
+    cursor: pointer;
+    transition: background-color 1s;
+}
+.block:hover {
+    background-color: rgba(0, 100, 0, .2);
+    transition: background-color .2s .1s;
+}
+.block-inner:hover {
+    background-color: rgba(0, 100, 0, .4);
+}
+#block-groups {
+    left: 0;
+    top: 11.2%;
+    width: 13.85%;
+    height: 88.9%;
+}
+#block-vars {
+    left: 13.85%;
+    top: 11.2%;
+    width: 13.85%;
+    height: 88.9%;
+}
+#block-templates {
+    left: 27.75%;
+    top: 11.2%;
+    width: calc(100% - 27.75%);
+    height: 82.4%;
+}
+#block-seekbar {
+    left: 27.75%;
+    top: 93.6%;
+    width: calc(100% - 27.75%);
+    height: calc(100% - 93.6%);
+}
+#block-editcopy {
+    left: 13.85%;
+    top: 36%;
+    width: 13.85%;
+    height: 10%;
+}
+
+
+.text {
+    user-select: none;
+    font-family: Inter, WPP Regular, sans-serif;;
+    font-size:1em;
+    line-height:1.05em;
+    letter-spacing: 0;
+    color:#000;
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .9);
+    color: #fff;
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    transform: translate(20%,-100%);
+    border-radius: 1em;
+}
+.text .clickable, .text .clickable .chars{
+    color: red;
+    text-decoration: underline;
+}
+.text .clickable:hover, .text .clickable:hover .chars{
+    color: darkred;
+    text-decoration: underline;
+}
+
+#text-vars {
+    top: auto;
+    bottom: 0;
+    transform: translate(1%, -15%);
+}
+#text-templates {
+    left: auto;
+    right: 0;
+    transform: translate(-50%,-100%);
+    max-width: 30%;
+}
+#text-seekbar {
+    transform: translate(10%,-100%);
+    bottom: auto;
+    top: 0;
+}
+#text-editcopy {
+    transform: translate(10%,-100%);   
+    top: 0;
+}
+
+#overlay {
+    width: 100%;
+    height: 100%;
+/*    display: flex;*/
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: none;
+}
+#overlay-bg {
+    background-color: rgba(0, 0, 0, .6);
+}
+.popup {
+    width: 50%;
+    height: 50%;
+    position: relative;
+/*    display: flex;*/
+    display: none;
+}
+
+
+#popup-editableGroups {
+    background-image: url(../images/hoxton.jpg);
+    background-size: contain;
+    width: auto;
+    aspect-ratio: 1210 / 1330;
+}
+.highlight-editableGroups {
+    position: absolute;
+    left: 7.5%;
+    width: 24%;
+    height: 7%;
+    background-color: rgba(91, 178, 20, 0.3);
+    opacity: 0;
+}
+#editableGroups01 {
+    top: 8%;
+    background-color: rgba(146, 20, 178, 0.4);
+}
+#editableGroups02 {
+    top: 24%;
+    background-color: rgba(146, 20, 178, 0.4);
+}
+#editableGroups03 {
+    top: 42%;
+}
+#editableGroups04 {
+    top: 58%
+}
+#editableGroups05 {
+    top: 74%;
+}
+#editableGroups06 {
+    top: 89.4%;
+}
+
+
+
+#popup-variables {
+    background-image: url(../images/hoxton.jpg);
+    background-size: contain;
+    width: auto;
+    aspect-ratio: 1210 / 1330;
+}
+.highlight-variables {
+    position: absolute;
+    left: 3.5%;
+    width: 36%;
+    height: 16%;
+    background-color: rgba(91, 178, 20, 0.3);
+    opacity: 0;
+}
+#variables01 {
+    top: 35%;
+    width: 56%;
+}
+#variables02 {
+    top: 51%;
+    background-color: rgba(146, 20, 178, 0.4);
+}
+#variables03 {
+    top: 67%;
+    width: 28%;
+}
+#variables04 {
+    top: 83%;
+    width: 40%;
+    background-color: rgba(146, 20, 178, 0.4);
+}
+
+
+
+
+
+.example-editcopy {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+    font-family: Inter;
+    letter-spacing: -0.02em;
+}
+#example-textareacopy {
+    opacity: 0;
+    top: 41%;
+    left: 16.2%;
+    border: none;
+    padding: 0;
+    width: 11.5%;
+    height: 3.4%;
+    font-size: 0.8vw;
+    box-sizing: border-box;
+    padding: 0 1em;
+    line-height: 2.1em;
+    font-family: Inter, WPP Regular, sans-serif;
+    color: grey;
+    background-color: #fff;
+    text-align: left;
+}
+#example-editcopy01 {
+    top: 21.1%;
+    left: 31.8%;
+    width: 11%;
+    font-size: 1.25em;
+}
+#example-editcopy02 {
+    top: 20.1%;
+    left: 46.8%;
+    width: 8%;
+    font-size: 1em;
+    height: 3%;
+    line-height: 1em;
+}
+#example-editcopy03 {
+    top: 85.1%;
+    left: 31.8%;
+    width: 11%;
+}
+#example-editcopy04 {
+    top: 16.1%;
+    left: 58.8%;
+    width: 11%;
+    font-size: 1em;
+    background-image: url(../images/background_300x250_x2.jpg);
+    background-position: 30% 18%;
+    background-size: 183%;
+}

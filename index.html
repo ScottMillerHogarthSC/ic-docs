@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    
+
+
+    <link rel="stylesheet" href="styles/styles.css">
+    <title></title>
+</head>
+<body>
+
+    <div id="container" class="abs full">
+        <img id="imgMain" class="full-w" src="images/screenshot01.jpg">
+
+
+        <div id="example-editcopy" class="abs full">
+            <div id="example-textareacopy" class="abs example-textareacopy example-editcopy">Some copy here</div>
+            <div id="example-editcopy01" class="abs example-editcopy">Some copy here</div>
+            <div id="example-editcopy02" class="abs example-editcopy">Some copy here</div>
+            <div id="example-editcopy03" class="abs example-editcopy">Some copy here</div>
+            <div id="example-editcopy04" class="abs example-editcopy">Some copy here</div>
+        </div>
+
+        <div id="block-groups" class="abs block">
+            <div id="text-groups" class="abs text hidden">
+                <p><b>Groups</b></p>
+                <p>These are the groups, defined in the template json using <a class="clickable" id="clickable-editableGroups">editableGroups</a></p>
+                <p>They are collections of variables which are used in the versions.</p>
+            </div>
+        </div>
+        <div id="block-vars" class="abs block">
+            <div id="text-vars" class="abs text hidden">
+                <p><b>Variables</b></p>
+                <p>These <a class="clickable" id="clickable-variables">variables</a> are defined in the hoxton.json file in the template.</p>
+                <p>Each value listed here can correspond to either an element within the template (ie. text area, image, video, etc), or can also be used as config settings or css.</p>
+                <p>Media content is stored in the <a>content library</a>
+            </div>
+        </div>
+        <div id="block-editcopy" class="abs block block-inner">
+            <div id="text-editcopy" class="abs text hidden">
+                <p>Content edited here is reflected live in the previews</p>
+                <p>It is not saved until you hit 'Save all' button, top right.</p>
+            </div>
+        </div>
+        <div id="block-templates" class="abs block">
+            <div id="text-templates" class="abs text hidden"><p>Here is the version preview showing your templated sizes and populated based on the selections on the left columns.</p></div>
+            
+        </div>
+        <div id="block-seekbar" class="abs block">
+            <div id="text-seekbar" class="abs text hidden"><p><b>seek bar</b> - controlling of playback of the previewed versions</p></div>
+        </div>
+    </div>
+
+    <div id="overlay" class="abs hidden">
+        <div id="overlay-bg" class="abs full hidden"></div>
+        <div id="popup-editableGroups" class="popup">
+            <div id="editableGroups01" class="highlight-editableGroups"></div>
+            <div id="editableGroups02" class="highlight-editableGroups"></div>
+            <div id="editableGroups03" class="highlight-editableGroups"></div>
+            <div id="editableGroups04" class="highlight-editableGroups"></div>
+            <div id="editableGroups05" class="highlight-editableGroups"></div>
+            <div id="editableGroups06" class="highlight-editableGroups"></div>
+        </div>
+
+        <div id="popup-variables" class="popup">
+            <div id="variables01" class="highlight-variables"></div>
+            <div id="variables02" class="highlight-variables"></div>
+            <div id="variables03" class="highlight-variables"></div>
+            <div id="variables04" class="highlight-variables"></div>
+        </div>
+    </div>
+
+    <script src="js/SplitText.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
