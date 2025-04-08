@@ -15,7 +15,9 @@ var container       = getById("container"),
     blockVars       = getById("block-vars"),
     blockTemplates  = getById("block-templates"),
     blocks          = document.getElementsByClassName("block"),
-    textareaCopy = getById("example-textareacopy");
+    textareaCopy = getById("example-textareacopy"),
+
+    _speed = .5;
 
 
 function bindListeners(){
@@ -64,10 +66,11 @@ function initTLs(eleID, clicked) {
         .to("#block-"+which+" .text", {height:0}, "reset")
 
         .to("#block-"+which+" .text:not(.text-inner)", clicked ? 0 : .2, { alpha:1 }, ">")
-        .to("#block-"+which+" .text .chars", clicked ? 0 : 1, { alpha:1,stagger:clicked ? 0 : 0.01}, "<")
-        .to("#block-"+which+" .text", clicked ? 0 : 1, {height:"auto", ease:"power1.out"}, "<")
+        .to("#block-"+which+" .text .chars", clicked ? 0 : _speed, { alpha:1,stagger:clicked ? 0 : 0.01}, "<")
+        .to("#block-"+which+" .text", clicked ? 0 : _speed, {height:"auto", ease:"power1.out"}, "<")
 
-    console.log(which);
+    
+    // special animation for copy editing:
     if(which=="editcopy"){
         console.log(which);
 
@@ -126,6 +129,17 @@ function showPopup(eleID) {
         .to("#overlay-bg", 1, {alpha:1}, ">")
         .to("#popup-"+which, {display:"flex"}, "reset")
         .to(".highlight-"+which,1,{alpha:1,stagger:.3}, "reset");
+
+    // if popup contains a video:
+    var this_video;
+    this_video = getById("video-"+which);
+    if(this_video){
+        this_video.currentTime=0;
+        this_video.play();
+    } else {
+        console.log("no video");
+    }
+    
 
 }
 

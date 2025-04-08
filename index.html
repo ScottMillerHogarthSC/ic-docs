@@ -27,15 +27,15 @@
 
         <div id="block-groups" class="abs block">
             <div id="text-groups" class="abs text hidden">
-                <p><b>Groups</b></p>
-                <p>These are the groups, defined in the template json using <a class="clickable" id="clickable-editableGroups">editableGroups</a></p>
+                <h2>Groups</h2>
+                <p>These are the groups, defined in the template json using <a class="clickable" id="clickable-editableGroups" title="show popup with more information">editableGroups</a></p>
                 <p>They are collections of variables which are used in the versions.</p>
             </div>
         </div>
         <div id="block-vars" class="abs block">
             <div id="text-vars" class="abs text hidden">
-                <p><b>Variables</b></p>
-                <p>These <a class="clickable" id="clickable-variables">variables</a> are defined in the hoxton.json file in the template.</p>
+                <h2>Variables</h2>
+                <p>These <a class="clickable" id="clickable-variables" title="show popup with more information">variables</a> are defined in the hoxton.json file in the template.</p>
                 <p>Each value listed here can correspond to either an element within the template (ie. text area, image, video, etc), or can also be used as config settings or css.</p>
                 <p>Media content is stored in the <a>content library</a>
             </div>
@@ -48,41 +48,86 @@
         </div>
         <div id="block-templates" class="abs block">
             <div id="text-templates" class="abs text hidden">
-                <p>Live versions preview, showing your templated sizes and populated based on the selections on the left columns.</p>
+                <h2>Live versions preview</h2>
+                <p>showing your templated sizes and populated based on the selections on the left columns.</p>
                 <p>New sizes are added here using either:
                     <ul>
-                        <li><a class="clickable">+ Add Template button</a> at the top where a list of Master Templates for this Client are shown.</li>
-                        <li>OR, created as <a id="clickable-newSize" class="clickable">"New sizes"</a> from the existing template. This approach assumes the template is setup with the necessary responsive css.</li>
+                        <li><a id="clickable-masterTemplates" class="clickable" title="show popup with more information">+ Add Template button</a> at the top where a list of Master Templates for this Client are shown.</li>
+                        <li>OR, created as <a id="clickable-newSize" class="clickable" title="show popup with more information">"New sizes"</a> from the existing template. This approach assumes the template is setup with the necessary responsive css.</li>
                     </ul>
                 </p>
             </div>
             
         </div>
         <div id="block-seekbar" class="abs block">
-            <div id="text-seekbar" class="abs text hidden"><p><b>seek bar</b> - controlling of playback of the previewed versions</p></div>
+            <div id="text-seekbar" class="abs text hidden">
+                <h2>seek bar</h2>
+                <p>controlling of playback of the previewed versions</p>
+            </div>
+        </div>
+
+        <div id="block-assembleButton" class="abs block">
+            <div id="text-assembleButton" class="abs text hidden">
+                <h2>Quick navigation</h2>
+                <p>This button gives quick navigation between this Assemble view, and other available steps in the workflow:</p>
+                <ul>
+                    <li><a class="external-link" target="_blank" title="link to more information about Creative Library view">Creative Library &raquo;</a></li>
+                    <li><a class="external-link" title="link to more information about Creative Library view">Connect &raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="block-langs" class="abs block">
+            <div id="text-langs" class="abs text hidden">
+                <h2>Languages</h2>
+                <p>Drop down to switch current language</p>
+                <p>Additional languages can be added using the <a class="clickable">+ Add Language</a> button.</p>
+            </div>
         </div>
     </div>
 
     <div id="overlay" class="abs hidden">
         <div id="overlay-bg" class="abs full hidden"></div>
         <div id="popup-editableGroups" class="popup">
-            <div id="editableGroups01" class="highlight-editableGroups"></div>
-            <div id="editableGroups02" class="highlight-editableGroups"></div>
-            <div id="editableGroups03" class="highlight-editableGroups"></div>
-            <div id="editableGroups04" class="highlight-editableGroups"></div>
-            <div id="editableGroups05" class="highlight-editableGroups"></div>
-            <div id="editableGroups06" class="highlight-editableGroups"></div>
+            <div class="popup-inner">
+                <p>Example excert from the hoxton.json file in the template, showing the editableGroup setting for each variable.</p>
+                <p>When the template is uploaded and used in Assemble, these editableGroups define which groups appear on the left panel.</p>
+                <p></p>
+            </div>
+            <div id="editableGroups" class="popup-inner hoxton-json">
+                <div id="editableGroups01" class="highlight-editableGroups"></div>
+                <div id="editableGroups02" class="highlight-editableGroups"></div>
+                <div id="editableGroups03" class="highlight-editableGroups"></div>
+                <div id="editableGroups04" class="highlight-editableGroups"></div>
+                <div id="editableGroups05" class="highlight-editableGroups"></div>
+                <div id="editableGroups06" class="highlight-editableGroups"></div>
+            </div>
         </div>
 
         <div id="popup-variables" class="popup">
-            <div id="variables01" class="highlight-variables"></div>
-            <div id="variables02" class="highlight-variables"></div>
-            <div id="variables03" class="highlight-variables"></div>
-            <div id="variables04" class="highlight-variables"></div>
+            <div class="popup-inner">
+                <p>Example excert from the hoxton.json file in the template, showing the variables which correspond to the editable fields on the left hand panel.</p>
+                <p>For more </p>
+            </div>
+            <div id="variables" class="popup-inner hoxton-json">
+                <div id="variables01" class="highlight-variables"></div>
+                <div id="variables02" class="highlight-variables"></div>
+                <div id="variables03" class="highlight-variables"></div>
+                <div id="variables04" class="highlight-variables"></div>
+            </div>
         </div>
-        <div id="popup-newSize" class="popup">
-            <video src="videos/new-size.mp4" playsinline controls>
+        <div id="popup-newSize" class="popup popup-video">
+            <h2>Adding new size (when using Responsive Master Template)</h2>
+            <video id="video-newSize" src="videos/new-size.mp4" playsinline controls></video>
+            <p>If you use responsive templates to create versions, when you upload your templates to the platform and use them in a campaign, you will need to create the required sizes there using this new size process.</p>
+            <p>An example of a responsive template is included in the boilerplates package: <a class="external-link" href="https://docs.hoxton.co/developer-guide/#advanced-responsive" target="_blank" title="advanced-responsive template example, section on the docs site">advanced-responsive</a></p>
         </div>
+        <div id="popup-masterTemplates" class="popup popup-video">
+            <video id="video-masterTemplates" src="videos/master-templates.mp4" playsinline controls></video>
+        </div>
+
+        
     </div>
 
     <script src="js/SplitText.min.js"></script>

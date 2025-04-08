@@ -18,6 +18,8 @@ body{
 
     /* below stops FireFox rendering copy too heavily */
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter';
+    font-size: 13px;
 }
 
 /* Fix to stop Mobile Safari automatically scaling text - http://bit.ly/1mumu5F */
@@ -29,12 +31,7 @@ body{
 
 
 /* Browser Support: Chrome:5+, Safari:5.1+, Firefox:3.6+, Opera:11.5+, IE:9+, Android:4.4+, iOS:5.1+ */
-@font-face {
-    font-family: 'ExampleFont';
-    src: url('../fonts/ExampleFont-BoldItalic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import"https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900";
 
 
 #container {
@@ -46,8 +43,6 @@ body{
     margin:auto;
     overflow: hidden;
     aspect-ratio: 3600 / 2008;
-    /* default font-size set here then other sizes set % based of this master value:*/
-    font-size: 13px;
 }
 
 .abs {
@@ -156,6 +151,18 @@ p{
     width: 13.85%;
     height: 10%;
 }
+#block-assembleButton {
+    left: 0;
+    top: 5%;
+    width: 7.55%;
+    height: 6.2%;   
+}
+#block-langs {
+    left: 7.3%;
+    top: 5%;
+    width: 19.55%;
+    height: 6.2%;
+}
 
 
 .text {
@@ -176,6 +183,8 @@ p{
 }
 .text .clickable, .text .clickable .chars{
     color: red;
+    white-space: nowrap;
+    
 }
 .text .clickable .chars{
     text-decoration: underline;
@@ -189,6 +198,26 @@ p{
     list-style-type: none;
     padding: 0 0 .5em .5em;
 }
+
+
+
+h2 {
+    font-size: 1.2em;
+    margin: 0 0 1em;
+    color: rgba(255, 233, 122, .9);
+}
+
+
+.external-link {
+    color: red;
+    white-space: nowrap;
+}
+.external-link .chars{
+    text-decoration: underline;
+}
+
+
+
 
 #text-vars {
     top: auto;
@@ -211,6 +240,21 @@ p{
     bottom: 0;
     top: auto;
 }
+#text-assembleButton {
+    transform: translate(45%, 0%);
+    top: 0;
+    left: 0;
+    width: 200%;
+    bottom: auto;
+}
+#text-langs {
+    transform: translate(100%, 0%);
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: auto;
+}
+
 
 #overlay {
     width: 100%;
@@ -222,23 +266,47 @@ p{
     display: none;
 }
 #overlay-bg {
-    background-color: rgba(0, 0, 0, .6);
+    background-color: rgba(0, 0, 0, .8);
 }
 .popup {
     width: 50%;
-    height: 50%;
+    height: auto;
     position: relative;
 /*    display: flex;*/
     display: none;
+    padding: 2em;
+    background-color: rgba(55, 0, 55, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .9);
+    color: #fff;
+    border-radius: 1em;
+    align-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
 }
-
-
-#popup-editableGroups {
+.popup-video {
+    flex-direction: column;
+}
+.popup video {
+    width: 100%;
+    margin-bottom: 1em;
+}
+.popup-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.popup-inner:last-of-type {
+    margin-left: 2em
+}
+.hoxton-json {
     background-image: url(../images/hoxton.jpg);
     background-size: contain;
-    width: auto;
     aspect-ratio: 1210 / 1330;
+    position: relative;   
+    min-height: 50vh;
 }
+
 .highlight-editableGroups {
     position: absolute;
     left: 7.5%;
@@ -270,12 +338,6 @@ p{
 
 
 
-#popup-variables {
-    background-image: url(../images/hoxton.jpg);
-    background-size: contain;
-    width: auto;
-    aspect-ratio: 1210 / 1330;
-}
 .highlight-variables {
     position: absolute;
     left: 3.5%;
