@@ -61,8 +61,11 @@ function initTLs(eleID, clicked) {
 
     tlBlocks.addLabel("reset", 0)
         .to([".chars",".text",".example-editcopy"], {alpha:0}, "reset")
+        .to("#block-"+which+" .text", {height:0}, "reset")
+
         .to("#block-"+which+" .text:not(.text-inner)", clicked ? 0 : .2, { alpha:1 }, ">")
-        .to("#block-"+which+" .text .chars", clicked ? 0 : 1, { alpha:1,stagger:clicked ? 0 : 0.01}, "<");
+        .to("#block-"+which+" .text .chars", clicked ? 0 : 1, { alpha:1,stagger:clicked ? 0 : 0.01}, "<")
+        .to("#block-"+which+" .text", clicked ? 0 : 1, {height:"auto", ease:"power1.out"}, "<")
 
     console.log(which);
     if(which=="editcopy"){

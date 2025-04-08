@@ -165,7 +165,7 @@ p{
     line-height:1.05em;
     letter-spacing: 0;
     color:#000;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(55, 0, 55, 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, .9);
     color: #fff;
     padding: 1em;
@@ -176,11 +176,18 @@ p{
 }
 .text .clickable, .text .clickable .chars{
     color: red;
+}
+.text .clickable .chars{
     text-decoration: underline;
+
 }
 .text .clickable:hover, .text .clickable:hover .chars{
     color: darkred;
     text-decoration: underline;
+}
+.text ul,.text li {
+    list-style-type: none;
+    padding: 0 0 .5em .5em;
 }
 
 #text-vars {
@@ -200,8 +207,9 @@ p{
     top: 0;
 }
 #text-editcopy {
-    transform: translate(10%,-100%);   
-    top: 0;
+    transform: translate(90%,60%);   
+    bottom: 0;
+    top: auto;
 }
 
 #overlay {
