@@ -5,7 +5,8 @@ gsap.defaults({overwrite: "auto", duration:0, ease:"none"});
 // as we are using className to target elements in certain sizes in the TL, we want to suppress warnings:
 gsap.config({nullTargetWarn:false});
 
-var tlBlocks = gsap.timeline( { defaults: { duration:0 , ease:"none" } } ),
+// var tlBlocks = gsap.timeline( { defaults: { duration:0 , ease:"none" } } ),
+var tls_Blocks = {},
     tlPopups = gsap.timeline( { defaults: { duration:0 , ease:"none" } } );
 
 
@@ -23,20 +24,69 @@ var container       = getById("container"),
 function bindListeners(){
     
     document.querySelectorAll(".block").forEach(el => {
+
+        var which = el.id.split("-")[1];
+        var newTL = gsap.timeline( { defaults: { duration:0 , ease:"none" }, paused:true } );
+
+        //
+        newTL.addLabel("reset", 0)
+            .to(".block", {zIndex:300}, "reset")
+            .to("#text-"+which, {zIndex:400}, "reset")
+            .to(["#text-"+which+" .chars","#text-"+which,"#text-"+which+" div",".example-editcopy"], {alpha:0}, "reset")
+            .to("#text-"+which, {height:0}, "reset")
+
+            .to("#text-"+which,.2, { alpha:1 }, ">.01")
+            .to("#text-"+which+" div", _speed, { alpha:1,stagger:0.01}, "<")
+            .to("#text-"+which+" .chars", _speed, { alpha:1,stagger:0.01}, "<")
+            .to("#text-"+which, _speed, {height:"auto", ease:"power1.out"}, "<")
+
+        
+        // special animation for copy editing:
+        if(which=="editcopy"){
+            console.log(which);
+
+            newTL.addLabel("textEdit", "<.25")
+                .to(".example-editcopy .chars", {alpha:0}, "textEdit")
+                .to("#example-textareacopy",{left:"16.2%",top:"41%"},"textEdit")
+                .to(".example-editcopy", {alpha:1}, ">")
+                .to("#example-textareacopy .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
+                .to("#example-editcopy01 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
+                .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
+                .to("#example-editcopy03 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
+                .to("#example-editcopy04 .chars", {alpha:1,stagger:.1}, "textEdit+=.15");
+        }
+
+         // special animation for copy editing:
+        if(which=="templateSpecific"){
+            console.log(which);
+
+            newTL.addLabel("templateSpecific", "<.25")
+                .to("#arrow-templateSpecific",.1,{rotation:90},"templateSpecific")
+                .to("#templateSpecific",.1,{alpha:1},"<")
+                .to(".example-editcopy .chars", {alpha:0}, "<")
+                .to("#example-textareacopy",{fontSize:"0.9em", paddingTop:"0.2em", left:"23%",top:"48%",overflow:"hidden",width:"8%"},"<")
+                
+                .to(["#example-editcopy02","#example-textareacopy"], {alpha:1}, ">1")
+                .to("#example-textareacopy .chars", {alpha:1,stagger:.1}, "<")
+                .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "<");
+        }
+
+
+        tls_Blocks[which] = newTL; // Store the TL in the object with 'which' as the key
+
+
+            
         
         el.addEventListener("click", () => {
-            initTLs(el.id,true);
+            showToolTip(el.id,true);
         });
 
         el.addEventListener("mouseenter", () => {
-            initTLs(el.id);
+            event.stopPropagation(); // Prevents the click from bubbling up to .block
+
+            showToolTip(el.id);
         });
 
-        // el.addEventListener("mouseleave", () => {
-        //     // initTLs("mouseleave "+el.id);
-        //     gsap.to(".text", 0, {alpha:0})
-        //     gsap.to(".text .chars", 0, {alpha:0})
-        // });
     });
 
     // 
@@ -54,36 +104,26 @@ function bindListeners(){
 }
 
 
-function initTLs(eleID, clicked) {
-    // console.log(which);
+
+function showToolTip(eleID, clicked) {
 
     var which = eleID.split("-")[1];
+    
+    // reset all toolTip Timelines except this one
 
-    tlBlocks.clear();
-
-    tlBlocks.addLabel("reset", 0)
-        .to([".chars",".text",".example-editcopy"], {alpha:0}, "reset")
-        .to("#block-"+which+" .text", {height:0}, "reset")
-
-        .to("#block-"+which+" .text:not(.text-inner)", clicked ? 0 : .2, { alpha:1 }, ">")
-        .to("#block-"+which+" .text .chars", clicked ? 0 : _speed, { alpha:1,stagger:clicked ? 0 : 0.01}, "<")
-        .to("#block-"+which+" .text", clicked ? 0 : _speed, {height:"auto", ease:"power1.out"}, "<")
+    Object.entries(tls_Blocks).forEach(([key, tl]) => {
+        if (key !== which) {
+            tl.seek("reset").pause();
+        }
+    });
 
     
-    // special animation for copy editing:
-    if(which=="editcopy"){
-        console.log(which);
-
-        tlBlocks.addLabel("textEdit", "<.25")
-            .to(".example-editcopy .chars", {alpha:0}, "textEdit")
-            .to(".example-editcopy", {alpha:1}, ">")
-            .to("#example-textareacopy .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
-            .to("#example-editcopy01 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
-            .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
-            .to("#example-editcopy03 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
-            .to("#example-editcopy04 .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
+    if(clicked) {
+        tls_Blocks[which].duration(0)
+    } else {
+        tls_Blocks[which].duration(2);
     }
-            
+    tls_Blocks[which].seek("reset").play();
     
 }
 function getById( eleID ) 
@@ -150,6 +190,3 @@ function closePopup(){
 
 
 goSite();
-
-
-initTLs("block-editcopy")

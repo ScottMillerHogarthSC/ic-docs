@@ -2,7 +2,6 @@
 /* CSS Document Common Elements */
 
 body{
-    position: absolute;
     border: 0 none;
     outline: 0;
     padding: 0;
@@ -10,6 +9,9 @@ body{
     background: #000;
     width:100%;
     height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     /* below improves consistancey of font rendering across browsers */
     -webkit-font-smoothing: antialiased;
@@ -35,13 +37,12 @@ body{
 
 
 #container {
-    position:absolute;
-    left: 0;
-    top: 0;
-    width:auto;
-    height:auto;
     margin:auto;
     overflow: hidden;
+    aspect-ratio: 3600 / 2008;
+    position: relative;
+}
+#imgMain {
     aspect-ratio: 3600 / 2008;
 }
 
@@ -110,6 +111,73 @@ p{
     background: #000;
 }
 
+
+
+/* ******************** generic styles for text / links / etc ************************* */
+
+.clickable {
+    cursor: pointer;
+    color: red;
+    white-space: nowrap;
+}
+.clickable .chars{
+}
+.clickable:after {
+    content: " ";
+    background-image: url(../images/popup.svg);
+    background-size: contain;
+    width: 1.2em;
+    background-position: center 0.15em;
+    background-repeat: no-repeat;
+    height: 1em;
+    display: inline-block;
+}
+.clickable:hover{
+    filter: brightness(.7);
+}
+.text ul,.text li {
+    list-style-type: none;
+    padding: 0 0 .5em .5em;
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 1.1em;
+    margin: 0 0 1em;
+    color: rgba(255, 233, 122, .9);
+}
+
+.external-link {
+    color: red;
+    white-space: nowrap;    
+}
+.external-link:after {
+    content: " ";
+    background-image: url(../images/external-link.svg);
+    background-size: contain;
+    width: 1.1em;
+    background-position: center 0.15em;
+    background-repeat: no-repeat;
+    height: 1em;
+    display: inline-block;
+}
+.external-link .chars{
+    text-decoration: underline;
+}
+.external-link:hover {
+    filter: brightness(.7);
+}
+.external-link:hover:after {
+    transform: scale(1.1);
+} 
+
+
+
+
+
+
+/* ******************** mouseOver blocks / areas of interest  ************************* */
+
 .block {
     cursor: pointer;
     transition: background-color 1s;
@@ -146,12 +214,12 @@ p{
     height: calc(100% - 93.6%);
 }
 #block-editcopy {
-    left: 13.85%;
+    left: 15.85%;
     top: 36%;
-    width: 13.85%;
+    width: 11.85%;
     height: 10%;
 }
-#block-assembleButton {
+#block-quickNavigation {
     left: 0;
     top: 5%;
     width: 7.55%;
@@ -163,7 +231,21 @@ p{
     width: 19.55%;
     height: 6.2%;
 }
+#block-templateSpecific {
+    left: 13.85%;
+    top: 35%;
+    width: 2.25%;
+    height: 6%;
+}
+#block-import {
+    left: 41.3%;
+    top: 5%;
+    width: 9%;
+    height: 6.2%;
+}
 
+
+/* ******************** Tooltips ************************* */
 
 .text {
     user-select: none;
@@ -178,84 +260,60 @@ p{
     padding: 1em;
     position: absolute;
     top: 50%;
-    transform: translate(20%,-100%);
+    left: 50%;
+    width: 10vw;
+    min-width: 200px;
+    height: auto;
     border-radius: 1em;
 }
-.text .clickable, .text .clickable .chars{
-    color: red;
-    white-space: nowrap;
-    
+
+
+
+#text-groups {
+    top: 45%;
+    left: 1%;
 }
-.text .clickable .chars{
-    text-decoration: underline;
-
-}
-.text .clickable:hover, .text .clickable:hover .chars{
-    color: darkred;
-    text-decoration: underline;
-}
-.text ul,.text li {
-    list-style-type: none;
-    padding: 0 0 .5em .5em;
-}
-
-
-
-h2 {
-    font-size: 1.2em;
-    margin: 0 0 1em;
-    color: rgba(255, 233, 122, .9);
-}
-
-
-.external-link {
-    color: red;
-    white-space: nowrap;
-}
-.external-link .chars{
-    text-decoration: underline;
-}
-
-
-
-
 #text-vars {
+    left: 15%;
     top: auto;
-    bottom: 0;
-    transform: translate(1%, -15%);
+    bottom: 3%;
 }
 #text-templates {
-    left: auto;
-    right: 0;
-    transform: translate(-50%,-100%);
+    top: 26%;
+    left: 76%;  
     max-width: 30%;
 }
 #text-seekbar {
-    transform: translate(10%,-100%);
-    bottom: auto;
-    top: 0;
+    top: auto;
+    left: 46%;
+    bottom: 5%;
 }
 #text-editcopy {
-    transform: translate(90%,60%);   
-    bottom: 0;
-    top: auto;
+    top: 38%;
+    left: 27%;   
 }
-#text-assembleButton {
-    transform: translate(45%, 0%);
-    top: 0;
-    left: 0;
-    width: 200%;
-    bottom: auto;
+#text-quickNavigation {
+    top: 1%;
+    left: 7%;
 }
 #text-langs {
-    transform: translate(100%, 0%);
-    top: 0;
-    left: auto;
-    right: 0;
-    bottom: auto;
+    top: 0.7%;
+    left: 25%;
+}
+#text-templateSpecific {
+    top: 15%;
+    left: 4%;
+}
+#text-import {
+    top: 0.7%;
+    left: 50%;
 }
 
 
+
+
+
+/* ******************** popups ************************* */
 #overlay {
     width: 100%;
     height: 100%;
@@ -264,11 +322,27 @@ h2 {
     justify-content: center;
     flex-direction: column;
     display: none;
+    z-index: 500;
+}
+.overlay-close {
+    cursor: pointer;
+    color: #fff;
+    text-align: right;
+    width: 3em;
+    z-index: 501;
+    top: -3em;
+    left: auto;
+    right: -3em;
+}
+.overlay-close:hover {
+    filter: invert(50%);
 }
 #overlay-bg {
     background-color: rgba(0, 0, 0, .8);
 }
 .popup {
+    z-index: 502;
+
     width: 50%;
     height: auto;
     position: relative;
@@ -299,6 +373,9 @@ h2 {
 .popup-inner:last-of-type {
     margin-left: 2em
 }
+
+
+
 .hoxton-json {
     background-image: url(../images/hoxton.jpg);
     background-size: contain;
@@ -366,6 +443,19 @@ h2 {
 
 
 
+
+/*  oddities and specific little elements for some animations */
+#arrow-templateSpecific {
+    position: absolute;
+    top: 36.7%;
+    left: 14.5%;
+    width: 1.20%;
+}
+#templateSpecific {
+    width: 13.9%;
+    left: 13.85%;
+    top: 40.9%;
+}
 
 
 .example-editcopy {
