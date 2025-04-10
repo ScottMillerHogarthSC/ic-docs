@@ -21,7 +21,9 @@ body{
     /* below stops FireFox rendering copy too heavily */
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter';
-    font-size: 13px;
+/*    font-size: clamp(MIN, PREFERRED, MAX);*/
+    font-size: clamp(14px, .675vw, 16px);
+
 }
 
 /* Fix to stop Mobile Safari automatically scaling text - http://bit.ly/1mumu5F */

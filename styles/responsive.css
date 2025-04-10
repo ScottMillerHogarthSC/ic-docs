@@ -1,0 +1,22 @@
+@media screen and (max-width: 1024px) {
+    body{
+        font-size: clamp(9px, .5vw, 16px);
+    }
+    .text {
+        min-width: 150px;
+    }
+    @media screen and (max-width: 800px) {
+
+        #container {
+            overflow: visible;
+        }
+        .text {
+            position: fixed;
+            bottom: auto !important;
+            top: 57vw !important;
+            width: calc(100% - 4em) !important;
+            max-width: 100% !important;
+            left: 1em !important;
+        }
+    }
+}

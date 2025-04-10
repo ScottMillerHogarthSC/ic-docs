@@ -20,6 +20,8 @@ var container       = getById("container"),
 
     _speed = .5;
 
+const clickedBlocks = new Set(); // Tracks clicked blocks
+
 
 function bindListeners(){
     
@@ -78,13 +80,20 @@ function bindListeners(){
             
         
         el.addEventListener("click", () => {
-            showToolTip(el.id,true);
+            // Clear all other clicked blocks
+            clickedBlocks.forEach(id => {
+                if (id !== which) clickedBlocks.delete(id);
+            });
+
+            clickedBlocks.add(which); // Mark this block as clicked
+            showToolTip(el.id, true);
         });
 
-        el.addEventListener("mouseenter", () => {
-            event.stopPropagation(); // Prevents the click from bubbling up to .block
-
-            showToolTip(el.id);
+        el.addEventListener("mouseenter", (event) => {
+            event.stopPropagation();
+            if (!clickedBlocks.has(which)) {
+                showToolTip(el.id);
+            }
         });
 
     });
@@ -109,10 +118,10 @@ function showToolTip(eleID, clicked) {
 
     var which = eleID.split("-")[1];
     
-    // reset all toolTip Timelines except this one
-
+    // Reset all toolTip timelines except this one,
+    // but only if not clicked
     Object.entries(tls_Blocks).forEach(([key, tl]) => {
-        if (key !== which) {
+        if (key !== which && !clickedBlocks.has(key)) {
             tl.seek("reset").pause();
         }
     });
