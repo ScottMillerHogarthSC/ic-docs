@@ -26,11 +26,16 @@
         <img id="templateSpecific" class="hidden abs" src="images/templateSpecific.jpg">
 
         <div id="example-editcopy" class="abs full">
-            <div id="example-textareacopy" class="abs example-textareacopy example-editcopy">Some copy here</div>
-            <div id="example-editcopy01" class="abs example-editcopy">Some copy here</div>
-            <div id="example-editcopy02" class="abs example-editcopy">Some copy here</div>
-            <div id="example-editcopy03" class="abs example-editcopy">Some copy here</div>
-            <div id="example-editcopy04" class="abs example-editcopy">Some copy here</div>
+            <div id="example-textareacopy" class="abs example-textareacopy example-editcopy hidden">Some copy here</div>
+            <div id="example-copy01" class="abs example-copy">FRAME 01 COPY</div>
+            <div id="example-copy02" class="abs example-copy">FRAME 01 COPY</div>
+            <div id="example-copy03" class="abs example-copy">FRAME 01 COPY</div>
+            <div id="example-copy04" class="abs example-copy">FRAME 01 COPY</div>
+
+            <div id="example-editcopy01" class="abs example-editcopy hidden">Some copy here</div>
+            <div id="example-editcopy02" class="abs example-editcopy hidden">Some copy here</div>
+            <div id="example-editcopy03" class="abs example-editcopy hidden">Some copy here</div>
+            <div id="example-editcopy04" class="abs example-editcopy hidden">Some copy here</div>
         </div>
 
         <img id="arrow-templateSpecific" src="images/arrow.jpg">
@@ -48,25 +53,30 @@
         <div id="block-quickNavigation" class="abs block"></div>
         <div id="block-langs" class="abs block"></div>
         <div id="block-import" class="abs block"></div>
+        <div id="block-addTemplate" class="abs block"></div>
+        <div id="block-addAssets" class="abs block"></div>
+        <div id="block-saveCancel" class="abs block"></div>
+        <div id="block-connectFeed" class="abs block"></div>
+        <div id="block-versionActions" class="abs block"></div>
 
 
         <!-- tooltip text boxes that show when POI are hovered: -->
         <div id="text-import" class="abs text hidden">
             <h2>Feed import</h2>
             <p>Version data can be imported from an Excel file.</p>
-            <p><a id="clickable-feedImportGlobal" class="clickable">Global</a></p>
-            <p><a id="clickable-feedImportTemplate" class="clickable">Template specific</a></p>
+            <p><a id="popup-link-feedImportGlobal" class="popup-link">Global</a></p>
+            <p><a id="popup-link-feedImportTemplate" class="popup-link">Template specific</a></p>
         </div>
 
         <div id="text-groups" class="abs text hidden">
-            <h2>Groups</h2>
-            <p>These are the groups, defined in the template json using <a class="clickable" id="clickable-editableGroups" title="show popup with more information">editableGroups</a></p>
-            <p>They are collections of variables which are used in the versions.</p>
+            <h2>Groups + Versions</h2>
+            <p>This panel shows the Versions.</p>
+            <p>Versions can be split out into sections called Groups (as shown here: <b>Message</b> and <b>Cta</b>). Groups are defined in the template json using <a class="popup-link" id="popup-link-editableGroups" title="show popup with more information">editableGroups</a>.</p>
         </div>
         
         <div id="text-vars" class="abs text hidden">
             <h2>Variables</h2>
-            <p>These <a class="clickable" id="clickable-variables" title="show popup with more information">variables</a> are defined in the hoxton.json file in the template.</p>
+            <p>These <a class="popup-link" id="popup-link-variables" title="show popup with more information">variables</a> are defined in the hoxton.json file in the template.</p>
             <p>Each value listed here can correspond to either an element within the template (ie. text area, image, video, etc), or can also be used as config settings or css.</p>
             <p>Media content is stored in the <a>content library</a>
         </div>
@@ -78,7 +88,7 @@
         <div id="text-templateSpecific" class="abs text hidden">
             <h2>Template specific values</h2>
             <p>This little arrow opens up the panel showing template specific values.</p>
-            <p>The global value will be used in all sizes, unless values are implicitly set here, or using <a class="clickable">template specific feed import</a>.</p>
+            <p>The global value will be used in all sizes, unless values are implicitly set here, or using <a id="popup-link-feedImportTemplate_1" class="popup-link">template specific</a> feed import</a>.</p>
         </div>
         
         <div id="text-templates" class="abs text hidden">
@@ -86,8 +96,8 @@
             <p>showing your templated sizes and populated based on the selections on the left columns.</p>
             <p>New sizes are added here using either:
                 <ul>
-                    <li><a id="clickable-masterTemplates" class="clickable" title="show popup with more information">+ Add Template button</a> at the top where a list of Master Templates for this Client are shown.</li>
-                    <li>OR, created as <a id="clickable-newSize" class="clickable" title="show popup with more information">"New sizes"</a> from the existing template. This approach assumes the template is setup with the necessary responsive css.</li>
+                    <li><a id="popup-link-masterTemplates" class="popup-link" title="show popup with more information">+ Add Template button</a> at the top where a list of Master Templates for this Client are shown.</li>
+                    <li>OR, created as <a id="popup-link-newSize" class="popup-link" title="show popup with more information">"New sizes"</a> from the existing template. This approach assumes the template is setup with the necessary responsive css.</li>
                 </ul>
             </p>
         </div>
@@ -110,14 +120,39 @@
         <div id="text-langs" class="abs text hidden">
             <h2>Languages</h2>
             <p>Drop down to switch current language</p>
-            <p>Additional languages can be added using the <a id="clickable-addLangs" class="clickable" title="show popup with workflow for adding a new language">+ Add Language</a> button.</p>
+            <p>Additional languages can be added using the <a id="popup-link-addLangs" class="popup-link" title="show popup with workflow for adding a new language">+ Add Language</a> button.</p>
+        </div>
+
+        <div id="text-saveCancel" class="abs text hidden">
+            <h2>Save or Cancel</h2>
+            <p>Any changes to the data within versions can be saved here. You can also cancel any changes made since last refresh with the Cancel All button.</p>
+            <p>Adding new or duplication of versions will persist even when cancelled, they will just have the default data.</p>
+        </div>
+        <div id="text-addAssets" class="abs text hidden">
+            <h2>Add Assets / Content Library</h2>
+            <p>Images and Video can be uploaded to the <a class="popup-link" id="popup-link-addAssets" title="show popup with more information">
+            Content Library</a> here and subsequently used within the versions.</p>
+        </div>
+        <div id="text-addTemplate" class="abs text hidden">
+            <h2>Add Template</h2>
+            <p>Additional sizes/templates can be selected and added to this campaign from the Master template repository using <a id="popup-link-masterTemplates_1" class="popup-link" title="show popup with more information">+ Add Template</a>.</p>
+        </div>
+
+        <div id="text-connectFeed" class="abs text hidden">
+            <h2>Connect feed</h2>
+            <p>A XML/JSON feed can be <a id="popup-link-connectFeed" class="popup-link">
+            connected</a> to populate version data within the group.</p>
+        </div>
+
+        <div id="text-versionActions" class="abs text hidden">
+            <h2>Version Actions</h2>
+            <p>Rename, Duplicate or Remove selected version.</p>
         </div>
     </div>
 
 
 
-
-    <!---- overlay popup for video or the 'more detail' overlays, when clickable elements are clicked -->
+    <!---- overlay popup for video or the 'more detail' overlays, when popup-link elements are clicked -->
     <div id="overlay" class="abs hidden">
         <div id="overlay-bg" class="abs full hidden"></div>
         <div id="popup-editableGroups" class="popup">
@@ -185,7 +220,20 @@
             <video id="video-feedImportTemplate" src="videos/template-specific-feed.mp4" playsinline controls></video>
         </div>
 
-        
+        <div id="popup-addAssets" class="popup popup-video">
+            <h2>Add Assets</h2>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video>
+        </div>
+
+        <div id="popup-connectFeed" class="popup popup-video">
+            <h2>Connect XML or JSON feed</h2>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <!-- <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video> -->
+            <p>Select either an external feed end point or local file. Connected Feeds are currently limited to either JSON or XML. Any key value pairs in the feed that match variable names in the Version will be automatically populated.</p>
+            <p>A unique key must be chosen from the feed data at time of connecting. This key value will be used as the new Version name.</p>
+            <p>Any variables that are not set from the feed will take the default values or if the version already exists, the existing data will be preserved.</p>
+        </div>
     </div>
 
     <script src="js/SplitText.min.js"></script>

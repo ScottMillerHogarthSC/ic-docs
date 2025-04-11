@@ -32,23 +32,28 @@ function bindListeners(){
 
         //
         newTL.addLabel("reset", 0)
+            .to(".text", {zIndex:299}, "reset")        
             .to(".block", {zIndex:300}, "reset")
-            .to("#text-"+which, {zIndex:400}, "reset")
-            .to(["#text-"+which+" .chars","#text-"+which,"#text-"+which+" div",".example-editcopy"], {alpha:0}, "reset")
+            .to(["#text-"+which+" .chars","#text-"+which,".example-editcopy"], {alpha:0}, "reset")
             .to("#text-"+which, {height:0}, "reset")
 
             .to("#text-"+which,.2, { alpha:1 }, ">.01")
-            .to("#text-"+which+" div", _speed, { alpha:1,stagger:0.01}, "<")
-            .to("#text-"+which+" .chars", _speed, { alpha:1,stagger:0.01}, "<")
+            .to("#text-"+which, {zIndex:400}, ">")
             .to("#text-"+which, _speed, {height:"auto", ease:"power1.out"}, "<")
+
+            .to("#text-"+which+" .chars", _speed, { alpha:1,stagger:0.01}, "<")
+        .addLabel("textShowing", ">")
+            .to(".block", {zIndex:300}, "textShowing")
+            .to("#text-"+which, {zIndex:400}, "<")
+
 
         
         // special animation for copy editing:
         if(which=="editcopy"){
             console.log(which);
 
-            newTL.addLabel("textEdit", "<.25")
-                .to(".example-editcopy .chars", {alpha:0}, "textEdit")
+            newTL.addLabel("textEdit", "reset+=.25")
+                .to([".example-editcopy .chars",".example-copy"], {alpha:0}, "textEdit")
                 .to("#example-textareacopy",{left:"16.2%",top:"41%"},"textEdit")
                 .to(".example-editcopy", {alpha:1}, ">")
                 .to("#example-textareacopy .chars", {alpha:1,stagger:.1}, "textEdit+=.15")
@@ -62,13 +67,13 @@ function bindListeners(){
         if(which=="templateSpecific"){
             console.log(which);
 
-            newTL.addLabel("templateSpecific", "<.25")
+            newTL.addLabel("templateSpecific", "reset+=.25")
                 .to("#arrow-templateSpecific",.1,{rotation:90},"templateSpecific")
                 .to("#templateSpecific",.1,{alpha:1},"<")
-                .to(".example-editcopy .chars", {alpha:0}, "<")
+                .to([".example-editcopy .chars","#example-copy02"], {alpha:0}, "<")
                 .to("#example-textareacopy",{fontSize:"0.9em", paddingTop:"0.2em", left:"23%",top:"48%",overflow:"hidden",width:"8%"},"<")
                 
-                .to(["#example-editcopy02","#example-textareacopy"], {alpha:1}, ">1")
+                .to(["#example-editcopy02","#example-textareacopy"], {alpha:1}, "<.1")
                 .to("#example-textareacopy .chars", {alpha:1,stagger:.1}, "<")
                 .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "<");
         }
@@ -86,24 +91,47 @@ function bindListeners(){
             });
 
             clickedBlocks.add(which); // Mark this block as clicked
-            showToolTip(el.id, true);
+            showToolTip(which, true);
         });
 
         el.addEventListener("mouseenter", (event) => {
             event.stopPropagation();
-            if (!clickedBlocks.has(which)) {
-                showToolTip(el.id);
-            }
+            document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+
+            el.classList.add("active");
+            showToolTip(which);
         });
 
     });
 
+
+
+    document.querySelectorAll(".text").forEach(el => {
+        var which = el.id.split("-")[1];
+
+        el.addEventListener("click", () => {
+            clickedBlocks.forEach(id => {
+                if (id !== which) clickedBlocks.delete(id);
+            });
+
+            clickedBlocks.add(which); // Mark this block as clicked
+            showToolTip(which, true);
+        });
+    });
+
+
+
     // 
-    document.querySelectorAll(".clickable").forEach(el => {
+    document.querySelectorAll(".popup-link").forEach(el => {
         el.addEventListener("click", () => {
             event.stopPropagation(); // Prevents the click from bubbling up to .block
-
-            showPopup(el.id);
+            var which = el.id.split("popup-link-")[1];
+            
+            // where we have two popup-links both wanting to show same popup:
+            if(which.split("_").length>0){
+                which = which.split("_")[0];
+            }
+            showPopup(which);
         });
     });
 
@@ -114,25 +142,22 @@ function bindListeners(){
 
 
 
-function showToolTip(eleID, clicked) {
+function showToolTip(which, clicked) {
 
-    var which = eleID.split("-")[1];
-    
     // Reset all toolTip timelines except this one,
     // but only if not clicked
     Object.entries(tls_Blocks).forEach(([key, tl]) => {
-        if (key !== which && !clickedBlocks.has(key)) {
+        if (key !== which /*&& !clickedBlocks.has(key)*/) {
             tl.seek("reset").pause();
         }
     });
 
-    
+    // if block is clicked we skip the animation:
     if(clicked) {
-        tls_Blocks[which].duration(0)
+        tls_Blocks[which].seek("textShowing",false).play()
     } else {
-        tls_Blocks[which].duration(2);
+        tls_Blocks[which].seek(0).play();
     }
-    tls_Blocks[which].seek("reset").play();
     
 }
 function getById( eleID ) 
@@ -141,19 +166,43 @@ function getById( eleID )
 }
 
 function goSite(){
-    initSplits();
 
+     // 
+    document.querySelectorAll(".popup-link").forEach(el => {
+        var spanIcon = document.createElement("span");
+        spanIcon.className="icon chars";
+        el.appendChild(spanIcon);
+    });
+
+    document.querySelectorAll(".external-link").forEach(el => {
+        var spanIcon = document.createElement("span");
+        spanIcon.className="icon chars";
+        el.appendChild(spanIcon);
+    });
+    
+
+    
+
+    initSplitTexts();
     bindListeners();
 }
 
-function initSplits() {
+
+var splitText_texts = {};
+var splitText_editCopy = {};
+function initSplitTexts() {
     document.querySelectorAll(".text").forEach(el => {
         var newSplit = new SplitText(el, {
             type: "lines,words,chars",
             linesClass: "lines",
             charsClass: "chars"
         });
-        gsap.to("#"+el.id+" .chars", 0, {alpha:0})
+        gsap.set("#"+el.id+" .chars", {alpha:0})
+
+        if (el.id) {
+            var which = el.id.split("-")[1];
+            splitText_texts[which] = newSplit;
+        }
     })
 
     
@@ -166,18 +215,20 @@ function initSplits() {
     });
 }
 
-function showPopup(eleID) {
-    console.log(eleID.split("-")[1]);
-    var which = eleID.split("-")[1];
 
+
+
+function showPopup(which) {
     tlPopups.clear();
 
     tlPopups.addLabel("reset", 0)
         .to("#overlay", {display:"flex",alpha:1}, "reset")
+        .to("#overlay-bg", {alpha:0}, "<")
+        .to("#popup-"+which, {display:"flex",alpha:1,scale:.1}, "reset")
         .to(".highlight-"+which, {alpha:0}, "<")
         .to("#overlay-bg", 1, {alpha:1}, ">")
-        .to("#popup-"+which, {display:"flex"}, "reset")
-        .to(".highlight-"+which,1,{alpha:1,stagger:.3}, "reset");
+        .to(".highlight-"+which,1,{alpha:1,stagger:.3}, "reset")
+        .to("#popup-"+which, .3, {scale:1,ease:"power1.out"}, "reset")
 
     // if popup contains a video:
     var this_video;
