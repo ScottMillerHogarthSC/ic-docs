@@ -1,4 +1,4 @@
-
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
 //hoxton.timeline = Creative.tl;
 gsap.defaults({overwrite: "auto", duration:0, ease:"none"});
 
@@ -16,7 +16,9 @@ var container       = getById("container"),
     blockVars       = getById("block-vars"),
     blockTemplates  = getById("block-templates"),
     blocks          = document.getElementsByClassName("block"),
-    textareaCopy = getById("example-textareacopy"),
+    textareaCopy    = getById("example-textareacopy"),
+    sections        = document.querySelectorAll(".section"),
+
 
     _speed = .5;
 
@@ -136,8 +138,45 @@ function bindListeners(){
     });
 
 
+    document.querySelectorAll(".site-link").forEach(a => {
+        a.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // console.log(a.getAttribute("href"));
+            gsap.to(window, {
+                duration: 1,
+                ease: "power2.inOut",
+                scrollTo: a.getAttribute("href")
+            });
+        });
+    });
+
+    sections.forEach((section, i) => {
+        ScrollTrigger.create({
+            trigger: section,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => scrollToSection(i),
+            onEnterBack: () => scrollToSection(i),
+        });
+    });
+
+
     overlay.addEventListener("click", closePopup);
-    
+}
+
+var isFirstLoad = true;
+function scrollToSection(index) {
+    gsap.to(window, {
+        duration: 1,
+        delay: isFirstLoad ? 1 : 0,
+        scrollTo: {
+            y: sections[index],
+            autoKill: false
+        },
+        onComplete: () => {isFirstLoad=false;},
+        ease: "power2.out"
+    });
 }
 
 

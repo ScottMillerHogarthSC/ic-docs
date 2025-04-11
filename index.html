@@ -13,10 +13,11 @@
     <title></title>
 </head>
 <body>
-
-    <div id="container">
+    <h1>Interactive Documentation</h1>
+    <h2>Assemble</h2>
+    <div id="section-Assemble" class="section">
         <!-- main screen shot image -->
-        <img id="imgMain" src="images/screenshot01.jpg">
+        <img id="screen-assemble" class="screen" src="images/screenshot-assemble.jpg">
 
 
 
@@ -62,20 +63,20 @@
 
         <!-- tooltip text boxes that show when POI are hovered: -->
         <div id="text-import" class="abs text hidden">
-            <h2>Feed import</h2>
+            <h3>Feed import</h3>
             <p>Version data can be imported from an Excel file.</p>
             <p><a id="popup-link-feedImportGlobal" class="popup-link">Global</a></p>
             <p><a id="popup-link-feedImportTemplate" class="popup-link">Template specific</a></p>
         </div>
 
         <div id="text-groups" class="abs text hidden">
-            <h2>Groups + Versions</h2>
+            <h3>Groups + Versions</h3>
             <p>This panel shows the Versions.</p>
             <p>Versions can be split out into sections called Groups (as shown here: <b>Message</b> and <b>Cta</b>). Groups are defined in the template json using <a class="popup-link" id="popup-link-editableGroups" title="show popup with more information">editableGroups</a>.</p>
         </div>
         
         <div id="text-vars" class="abs text hidden">
-            <h2>Variables</h2>
+            <h3>Variables</h3>
             <p>These <a class="popup-link" id="popup-link-variables" title="show popup with more information">variables</a> are defined in the hoxton.json file in the template.</p>
             <p>Each value listed here can correspond to either an element within the template (ie. text area, image, video, etc), or can also be used as config settings or css.</p>
             <p>Media content is stored in the <a>content library</a>
@@ -86,13 +87,13 @@
         </div>
         
         <div id="text-templateSpecific" class="abs text hidden">
-            <h2>Template specific values</h2>
+            <h3>Template specific values</h3>
             <p>This little arrow opens up the panel showing template specific values.</p>
             <p>The global value will be used in all sizes, unless values are implicitly set here, or using <a id="popup-link-feedImportTemplate_1" class="popup-link">template specific</a> feed import</a>.</p>
         </div>
         
         <div id="text-templates" class="abs text hidden">
-            <h2>Live versions preview</h2>
+            <h3>Live versions preview</h3>
             <p>showing your templated sizes and populated based on the selections on the left columns.</p>
             <p>New sizes are added here using either:
                 <ul>
@@ -103,53 +104,57 @@
         </div>
 
         <div id="text-seekbar" class="abs text hidden">
-            <h2>seek bar</h2>
+            <h3>seek bar</h3>
             <p>Controlling of playback of the previewed versions.</p>
             <p>On HTML templates, this playbar is bound directly to the playhead of the gsap timeline defined in the template (in the boilerplate templates we do this in setDynamicContent.js : (hoxton.timeline = Creative.tl) </p>
         </div>
         
         <div id="text-quickNavigation" class="abs text hidden">
-            <h2>Quick navigation</h2>
+            <h3>Quick navigation</h3>
             <p>This button gives quick navigation between this Assemble view, and other available steps in the workflow:</p>
             <ul>
-                <li><a class="external-link" target="_blank" title="link to more information about Creative Library view">Creative Library &raquo;</a></li>
-                <li><a class="external-link" title="link to more information about Creative Library view">Connect &raquo;</a></li>
+                <li><a class="site-link" href="#section-campaignView" title="link to more information about Creative Library view">Creative Library</a></li>
+                <li><a class="external-link" title="link to more information about Creative Library view">Connect</a></li>
             </ul>
         </div>
         
         <div id="text-langs" class="abs text hidden">
-            <h2>Languages</h2>
+            <h3>Languages</h3>
             <p>Drop down to switch current language</p>
             <p>Additional languages can be added using the <a id="popup-link-addLangs" class="popup-link" title="show popup with workflow for adding a new language">+ Add Language</a> button.</p>
         </div>
 
         <div id="text-saveCancel" class="abs text hidden">
-            <h2>Save or Cancel</h2>
+            <h3>Save or Cancel</h3>
             <p>Any changes to the data within versions can be saved here. You can also cancel any changes made since last refresh with the Cancel All button.</p>
             <p>Adding new or duplication of versions will persist even when cancelled, they will just have the default data.</p>
         </div>
         <div id="text-addAssets" class="abs text hidden">
-            <h2>Add Assets / Content Library</h2>
+            <h3>Add Assets / Content Library</h3>
             <p>Images and Video can be uploaded to the <a class="popup-link" id="popup-link-addAssets" title="show popup with more information">
             Content Library</a> here and subsequently used within the versions.</p>
         </div>
         <div id="text-addTemplate" class="abs text hidden">
-            <h2>Add Template</h2>
+            <h3>Add Template</h3>
             <p>Additional sizes/templates can be selected and added to this campaign from the Master template repository using <a id="popup-link-masterTemplates_1" class="popup-link" title="show popup with more information">+ Add Template</a>.</p>
         </div>
 
         <div id="text-connectFeed" class="abs text hidden">
-            <h2>Connect feed</h2>
+            <h3>Connect feed</h3>
             <p>A XML/JSON feed can be <a id="popup-link-connectFeed" class="popup-link">
             connected</a> to populate version data within the group.</p>
         </div>
 
         <div id="text-versionActions" class="abs text hidden">
-            <h2>Version Actions</h2>
+            <h3>Version Actions</h3>
             <p>Rename, Duplicate or Remove selected version.</p>
         </div>
     </div>
 
+    <h2>Campaign View</h2>
+    <div id="section-campaignView" class="section">
+        <img id="screen-campaignView" class="screen" src="images/screenshot-campaignView.jpg">
+    </div>
 
 
     <!---- overlay popup for video or the 'more detail' overlays, when popup-link elements are clicked -->
@@ -187,13 +192,13 @@
         </div>
         <div id="popup-newSize" class="popup popup-video">
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <h2>Adding new size (when using Responsive Master Template)</h2>
+            <h3>Adding new size (when using Responsive Master Template)</h3>
             <video id="video-newSize" src="videos/new-size.mp4" playsinline controls></video>
             <p>If you use responsive templates to create versions, when you upload your templates to the platform and use them in a campaign, you will need to create the required sizes there using this new size process.</p>
             <p>An example of a responsive template is included in the boilerplates package: <a class="external-link" href="https://docs.hoxton.co/developer-guide/#advanced-responsive" target="_blank" title="advanced-responsive template example, section on the docs site">advanced-responsive</a></p>
         </div>
         <div id="popup-masterTemplates" class="popup popup-video">
-            <h2>Adding new size/template from Master Templates</h2>
+            <h3>Adding new size/template from Master Templates</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <video id="video-masterTemplates" src="videos/master-templates.mp4" playsinline controls></video>
             <p>Additional templates can be selected from the Master Templates list and added to campaign.</p>
@@ -201,7 +206,7 @@
         </div>
 
         <div id="popup-addLangs" class="popup popup-video">
-            <h2>Adding New Languages</h2>
+            <h3>Adding New Languages</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <video id="video-addLangs" src="videos/add-langs.mp4" playsinline controls></video>
             <p>All content can be specific to one 'language' within the platform. If new languages are added using this approach, you can switch between languages to make changes or preview content for each language.</p>
@@ -209,25 +214,25 @@
         </div>
 
         <div id="popup-feedImportGlobal" class="popup popup-video">
-            <h2>Import feed - global</h2>
+            <h3>Import feed - global</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <video id="video-feedImportGlobal" src="videos/global-feed.mp4" playsinline controls></video>
         </div>
 
         <div id="popup-feedImportTemplate" class="popup popup-video">
-            <h2>Import feed - Template Specific</h2>
+            <h3>Import feed - Template Specific</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <video id="video-feedImportTemplate" src="videos/template-specific-feed.mp4" playsinline controls></video>
         </div>
 
         <div id="popup-addAssets" class="popup popup-video">
-            <h2>Add Assets</h2>
+            <h3>Add Assets</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video>
         </div>
 
         <div id="popup-connectFeed" class="popup popup-video">
-            <h2>Connect XML or JSON feed</h2>
+            <h3>Connect XML or JSON feed</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <!-- <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video> -->
             <p>Select either an external feed end point or local file. Connected Feeds are currently limited to either JSON or XML. Any key value pairs in the feed that match variable names in the Version will be automatically populated.</p>
@@ -235,7 +240,8 @@
             <p>Any variables that are not set from the feed will take the default values or if the version already exists, the existing data will be preserved.</p>
         </div>
     </div>
-
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/ScrollToPlugin.min.js"></script>
     <script src="js/SplitText.min.js"></script>
     <script src="js/main.js"></script>
 </body>
