@@ -13,16 +13,15 @@
     <title></title>
 </head>
 <body>
-    <h1>Interactive Documentation</h1>
-    <h2>Assemble</h2>
     <div id="section-Assemble" class="section">
+        <h1>Interactive Documentation</h1>
+        <h2>Assemble</h2>
         <!-- main screen shot image -->
         <img id="screen-assemble" class="screen" src="images/screenshot-assemble.jpg">
 
 
 
-        <!-- oddities and specific little elements for some animations -->
-
+        <!-- oddities and specific little elements for some animations /// ASSEMBLE -->
 
         <img id="templateSpecific" class="hidden abs" src="images/templateSpecific.jpg">
 
@@ -48,8 +47,8 @@
         <div id="block-groups" class="abs block"></div>
         <div id="block-vars" class="abs block"></div>
         <div id="block-templates" class="abs block"></div>
-        <div id="block-editcopy" class="abs block block-inner"></div>
-        <div id="block-templateSpecific" class="abs block block-inner"></div>
+        <div id="block-editcopy" class="abs block"></div>
+        <div id="block-templateSpecific" class="abs block"></div>
         <div id="block-seekbar" class="abs block"></div>
         <div id="block-quickNavigation" class="abs block"></div>
         <div id="block-langs" class="abs block"></div>
@@ -113,7 +112,7 @@
             <h3>Quick navigation</h3>
             <p>This button gives quick navigation between this Assemble view, and other available steps in the workflow:</p>
             <ul>
-                <li><a class="site-link" href="#section-campaignView" title="link to more information about Creative Library view">Creative Library</a></li>
+                <li><a class="site-link" href="#section-creativeLibrary" title="see the section for Creative Library view">Creative Library</a></li>
                 <li><a class="external-link" title="link to more information about Creative Library view">Connect</a></li>
             </ul>
         </div>
@@ -151,9 +150,63 @@
         </div>
     </div>
 
-    <h2>Campaign View</h2>
-    <div id="section-campaignView" class="section">
+    
+    
+
+
+
+    <div id="section-creativeLibrary" class="section">
+        <h2>Creative Library</h2>
         <img id="screen-campaignView" class="screen" src="images/screenshot-campaignView.jpg">
+
+
+        <!-- oddities and specific little elements for some animations /// CREATIVE LIBRARY -->
+
+        <img id="workflowFilters" class="hidden abs" src="images/workflow-filters.jpg">
+
+
+         <!-- all our 'blocks' or Points of interest -->
+        <div id="block-creatives" class="abs block"></div>
+        <div id="block-creativesList" class="abs block"></div>
+        <!-- <div id="block-templateSpecific" class="abs block"></div> -->
+        <div id="block-seekbar_1" class="abs block"></div>
+        <div id="block-quickNavigation_1" class="abs block"></div>
+        <!-- <div id="block-langs" class="abs block"></div> -->
+        <!-- <div id="block-import" class="abs block"></div> -->
+        <!-- <div id="block-addTemplate" class="abs block"></div> -->
+        <!-- <div id="block-addAssets" class="abs block"></div> -->
+        <!-- <div id="block-saveCancel" class="abs block"></div> -->
+        <div id="block-workflow" class="abs block"></div>
+        <!-- <div id="block-versionActions" class="abs block"></div> -->
+
+
+
+        <!-- tooltip text boxes that show when POI are hovered: -->
+        <div id="text-creatives" class="abs text hidden">
+            <h3>Creatives Filtering</h3>
+            <p>Here you will see a list of all your variants split out languages, sizes and any groups you have defined.</p>
+            <p>Using these checkboxes you can filter the versions listed in the righthand side of the page.</p>
+        </div>
+        <div id="text-creativesList" class="abs text hidden">
+            <h3>Creatives List</h3>
+        </div>
+        <div id="text-quickNavigation_1" class="abs text hidden">
+            <h3>Quick navigation</h3>
+            <p>This button gives quick navigation between this Creative Library view, and other available steps in the workflow:</p>
+            <ul>
+                <li><a class="site-link" href="#section-Assemble" title="see the section about Assemble">Assemble</a></li>
+                <li><a class="external-link" title="link to more information about Creative Library view">Connect</a></li>
+            </ul>
+        </div>
+        <div id="text-workflow" class="abs text hidden">
+            <h3>Workflow filters</h3>
+            <p>Click to change this left panel to show these various filters that can be applied to the list of previews currently being shown.</p>
+            <p>As you make selections here the previews listed on the right will automatically update to reflect your new selection.</p>
+        </div>
+        <div id="text-seekbar_1" class="abs text hidden">
+            <h3>seek bar</h3>
+            <p>Controlling of playback of all visible version previews above.</p>
+        </div>
     </div>
 
 

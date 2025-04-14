@@ -80,6 +80,12 @@ function bindListeners(){
                 .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "<");
         }
 
+         if(which=="workflow"){
+            console.log(which);
+            newTL.addLabel("workflow", "reset+=.5")
+                .to("#workflowFilters",.1,{alpha:1},"workflow")
+        }
+
 
         tls_Blocks[which] = newTL; // Store the TL in the object with 'which' as the key
 
@@ -151,14 +157,22 @@ function bindListeners(){
         });
     });
 
-    sections.forEach((section, i) => {
-        ScrollTrigger.create({
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            onEnter: () => scrollToSection(i),
-            onEnterBack: () => scrollToSection(i),
-        });
+    ScrollTrigger.create({
+        trigger: "#section-Assemble",
+        start: "-20% top",
+        end: "80% center",
+        // markers: true,
+        onEnter: () => scrollToSection(0),
+        onEnterBack: () => scrollToSection(0),
+    });
+
+    ScrollTrigger.create({
+        trigger: "#section-creativeLibrary",
+        start: "10% center",
+        end: "bottom center",
+        // markers: true,
+        onEnter: () => scrollToSection(1),
+        onEnterBack: () => scrollToSection(1),
     });
 
 
@@ -175,7 +189,7 @@ function scrollToSection(index) {
             autoKill: false
         },
         onComplete: () => {isFirstLoad=false;},
-        ease: "power2.out"
+        ease: "power2.inOut"
     });
 }
 
