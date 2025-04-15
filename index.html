@@ -43,7 +43,7 @@
 
 
 
-        <!-- all our 'blocks' or Points of interest -->
+        <!-- ASSEMBLE VIEW 'blocks' or Points of interest -->
         <div id="block-groups" class="abs block"></div>
         <div id="block-vars" class="abs block"></div>
         <div id="block-templates" class="abs block"></div>
@@ -64,6 +64,7 @@
         <div id="text-import" class="abs text hidden">
             <h3>Feed import</h3>
             <p>Version data can be imported from an Excel file.</p>
+            <p>It is recommended to try to first update the Global values, before working with Template Specific values.</p>
             <p><a id="popup-link-feedImportGlobal" class="popup-link">Global</a></p>
             <p><a id="popup-link-feedImportTemplate" class="popup-link">Template specific</a></p>
         </div>
@@ -148,6 +149,7 @@
             <h3>Version Actions</h3>
             <p>Rename, Duplicate or Remove selected version.</p>
         </div>
+
     </div>
 
     
@@ -162,23 +164,23 @@
 
         <!-- oddities and specific little elements for some animations /// CREATIVE LIBRARY -->
 
+        <img id="listView" class="hidden abs" src="images/screenshot-listView.jpg">
         <img id="workflowFilters" class="hidden abs" src="images/workflow-filters.jpg">
 
 
-         <!-- all our 'blocks' or Points of interest -->
+         <!-- CREATIVE LIBRARY 'blocks' or Points of interest -->
         <div id="block-creatives" class="abs block"></div>
         <div id="block-creativesList" class="abs block"></div>
-        <!-- <div id="block-templateSpecific" class="abs block"></div> -->
         <div id="block-seekbar_1" class="abs block"></div>
         <div id="block-quickNavigation_1" class="abs block"></div>
-        <!-- <div id="block-langs" class="abs block"></div> -->
-        <!-- <div id="block-import" class="abs block"></div> -->
-        <!-- <div id="block-addTemplate" class="abs block"></div> -->
-        <!-- <div id="block-addAssets" class="abs block"></div> -->
-        <!-- <div id="block-saveCancel" class="abs block"></div> -->
+        <div id="block-adServerLink" class="abs block"></div>
+        <div id="block-listView" class="abs block"></div>
+        <div id="block-scaling" class="abs block"></div>
         <div id="block-workflow" class="abs block"></div>
-        <!-- <div id="block-versionActions" class="abs block"></div> -->
-
+        <div id="block-publish" class="abs block"></div>
+        <div id="block-visibilty" class="abs block"></div>
+        <div id="block-productionStatus" class="abs block"></div>
+        
 
 
         <!-- tooltip text boxes that show when POI are hovered: -->
@@ -189,6 +191,8 @@
         </div>
         <div id="text-creativesList" class="abs text hidden">
             <h3>Creatives List</h3>
+            <p>A list showing previews of each ad version in this campaign</p>
+            <p>Your selections on the left hand column will update the versions shown here</p>
         </div>
         <div id="text-quickNavigation_1" class="abs text hidden">
             <h3>Quick navigation</h3>
@@ -207,7 +211,56 @@
             <h3>seek bar</h3>
             <p>Controlling of playback of all visible version previews above.</p>
         </div>
+        <div id="text-scaling" class="abs text hidden">
+            <h3>Ad scaling</h3>
+            <p>The zoom level of the preview panes can be adjusted here.</p>
+        </div>
+        <div id="text-listView" class="abs text hidden">
+            <h3>Preview / List view</h3>
+            <p>Toggle between previews and a table view of your listed versions.</p>
+            <p>It is important to note that some additional functionality is available to you in list view:</p>
+            <ul>
+                <li><a class="popup-link" id="popup-link-listviewLargeSelections" title="watch the video showing this process">Larger selections</a></li>
+                <li><a class="popup-link" id="popup-link-listviewManuallySetReportingLabel" title="watch the video showing this process">Manually Set ReportingLabel</a></li>
+                <li><a class="popup-link" id="popup-link-listviewShowCreativeValues" title="watch the video showing this process">Show Creative Values</a></li>
+                <li><a class="popup-link" id="popup-link-listviewAdditionalColumns" title="watch the video showing this process">Additional Columns</a></li>
+            </ul>
+        </div>
+        <div id="text-adServerLink" class="abs text hidden">
+            <h3>Ad Server Link</h3>
+            <p>Fill in these details to setup the connection to Facebook (Meta) Ads Manager.</p>
+        </div>
+        <div id="text-publish" class="abs text hidden">
+            <h3>Publish selected ad versions</h3>
+            <p>Once you have made a selection in the list below, you can then click this button and choose from Google, Sizmek, Choreograph feeds or TikTok Ads Manager.</p>
+            <p>An xml feed will be generated, setup for the appropriate ad server, containing the version data of your selected versions.</p><p>Further versions can be selected and publishing again will add them to the same XML feed, or choose Rebuild feed to overwrite the XML with the new selection.</p>
+        </div>
+        <div id="text-visibilty" class="abs text hidden">
+            <h3>Set Version Visibility</h3>
+            <p>There are mulitple user roles available within the platform.</p>
+            <p>From this button/dropdown you can set the visibility of versions to other user roles.</p>
+            <p>By default most user roles entering this campaign would not see any versions. Only when a selection is made by Content Editor or Admin, and then, using this button, Visiblity settings are applied, would those versions then show in this view.</p>
+            <p>Those user roles also have no access to Assemble view, so when they open a direct link to a campaign, they would be automatically redirected to this page.</p>
+        </div>
+        <div id="text-productionStatus" class="abs text hidden">
+            <h3>Set Production Status</h3>
+            <p>There are four Production Status flags available to use.</p>
+            <p>As part of a worklow these can be very useful for preserving selections, especially in campaigns with large numbers of variants and complicated group setups.</p>
+            <p>Making your filtered selection using the checkboxes on the left panel can be time consuming so once you have made it, it is recommended to then save that selection using the production status flag.</p>
+            <p>Apply the filters, select all versions, then use this button to set status.</p>
+            <p>You can then recall that selection using the Workflow filters on the lefthand panel.</p>
+        </div>
+        
     </div>
+
+
+
+
+
+
+
+
+
 
 
     <!---- overlay popup for video or the 'more detail' overlays, when popup-link elements are clicked -->
@@ -246,14 +299,14 @@
         <div id="popup-newSize" class="popup popup-video">
             <div class="overlay-close abs"><img src="images/close.svg"></div>
             <h3>Adding new size (when using Responsive Master Template)</h3>
-            <video id="video-newSize" src="videos/new-size.mp4" playsinline controls></video>
+            <video id="video-newSize" class="video-popup" src="videos/new-size.mp4" playsinline controls></video>
             <p>If you use responsive templates to create versions, when you upload your templates to the platform and use them in a campaign, you will need to create the required sizes there using this new size process.</p>
             <p>An example of a responsive template is included in the boilerplates package: <a class="external-link" href="https://docs.hoxton.co/developer-guide/#advanced-responsive" target="_blank" title="advanced-responsive template example, section on the docs site">advanced-responsive</a></p>
         </div>
         <div id="popup-masterTemplates" class="popup popup-video">
             <h3>Adding new size/template from Master Templates</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <video id="video-masterTemplates" src="videos/master-templates.mp4" playsinline controls></video>
+            <video id="video-masterTemplates" class="video-popup" src="videos/master-templates.mp4" playsinline controls></video>
             <p>Additional templates can be selected from the Master Templates list and added to campaign.</p>
             <p>If using this approach to create new sizes within a campaign, ideally you would ensure the hoxton.json files contain the same set of editableGroups and variables. Even if some are not used in another size, leave the variables in place.</p>
         </div>
@@ -261,7 +314,7 @@
         <div id="popup-addLangs" class="popup popup-video">
             <h3>Adding New Languages</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <video id="video-addLangs" src="videos/add-langs.mp4" playsinline controls></video>
+            <video id="video-addLangs" class="video-popup" src="videos/add-langs.mp4" playsinline controls></video>
             <p>All content can be specific to one 'language' within the platform. If new languages are added using this approach, you can switch between languages to make changes or preview content for each language.</p>
             <p>NOTE- The use of feed import when using languages is limited.</p>
         </div>
@@ -269,28 +322,65 @@
         <div id="popup-feedImportGlobal" class="popup popup-video">
             <h3>Import feed - global</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <video id="video-feedImportGlobal" src="videos/global-feed.mp4" playsinline controls></video>
+            <video id="video-feedImportGlobal" class="video-popup" src="videos/global-feed.mp4" playsinline controls></video>
+            <p>It is recommended to try to always update Global values before working with Template Specific values.</p>
+            <p>The global value will be used in all sizes unless a different value is specified in the template specific value for that size.</p><p>If template specific data is present, and then a global feed import is done, the change will not take effect because the system prioritises preserving the template specific data.</p><p>The lock icon, shown next to a template specific value, shows that that data will not be overwritten by the global value. You can click this lock to remove the template specific value and allow the global value to show at that size.</p>
         </div>
 
         <div id="popup-feedImportTemplate" class="popup popup-video">
             <h3>Import feed - Template Specific</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <video id="video-feedImportTemplate" src="videos/template-specific-feed.mp4" playsinline controls></video>
+            <video id="video-feedImportTemplate" class="video-popup" src="videos/template-specific-feed.mp4" playsinline controls></video>
+            <p>It is recommended to try to always first set a Global value for each version, before working with these Template Specific values. The global value will be used in all sizes unless a different value is specified in these template specific values, for a certain size.</p>
+            <ul>
+                <li>If a Global value is set first, then template specific value added, and it is an exact match, the "lock" icon will not turn on for that size and editing the global value will affect it.</li>
+                <li>If the value being set is different, the lock will turn on. Editing the global value now will not affect this size, in this version.</li>
+            </ul>
         </div>
 
         <div id="popup-addAssets" class="popup popup-video">
             <h3>Add Assets</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video>
+            <video id="video-addAssets" class="video-popup" src="videos/add-assets.mp4" playsinline controls></video>
         </div>
 
         <div id="popup-connectFeed" class="popup popup-video">
             <h3>Connect XML or JSON feed</h3>
             <div class="overlay-close abs"><img src="images/close.svg"></div>
-            <!-- <video id="video-addAssets" src="videos/add-assets.mp4" playsinline controls></video> -->
+            <!-- <video id="video-addAssets" class="video-popup" src="videos/add-assets.mp4" playsinline controls></video> -->
             <p>Select either an external feed end point or local file. Connected Feeds are currently limited to either JSON or XML. Any key value pairs in the feed that match variable names in the Version will be automatically populated.</p>
             <p>A unique key must be chosen from the feed data at time of connecting. This key value will be used as the new Version name.</p>
             <p>Any variables that are not set from the feed will take the default values or if the version already exists, the existing data will be preserved.</p>
+        </div>
+
+        <div id="popup-listviewLargeSelections" class="popup popup-video">
+            <h3>Creative Library - List view - Large selections</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-listviewLargeSelections" class="video-popup" src="videos/listview-largeSelections.mp4" playsinline controls></video>
+            <p>Larger selections can be made, allowing, for example, the download of more assets in one go, or the generation of more preview links (in preview list mode a maximium of 10 can be selected at once).</p>
+        </div>
+
+        <div id="popup-listviewAdditionalColumns" class="popup popup-video">
+            <h3>Creative Library - List view - Additional Columns</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-listviewAdditionalColumns" class="video-popup" src="videos/listview-additionalColumns.mp4" playsinline controls></video>
+            <p>You can add additional columns here.</p>
+            <p>The data in these will be reflected in the feed generated when versions are published. These are useful for adding, for example, Line Item IDs to versions. One issue with using these columns is that they will not be present in your Excel content feed, when doing <a class="popup-link" id="popup-link-feedImportGlobal_1">feed import/export</a> in Assemble view. They can currently be maintained in Creative Library list view only, not updated via a feed sheet.</p>
+        </div>
+
+        <div id="popup-listviewShowCreativeValues" class="popup popup-video">
+            <h3>Creative Library - List view - Show creative values</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-listviewShowCreativeValues" class="video-popup" src="videos/listview-showCreativeValues.mp4" playsinline controls></video>
+            <p>You can filter which columns to display here, from the size, languages and your groups, but also turn on Show Creative Values, allowing you to see all the actual version data for each version in a convenient table form.</p>
+        </div>
+        <div id="popup-listviewManuallySetReportingLabel" class="popup popup-video">
+            <h3>Creative Library - List view - Manually Set Reporting Labels</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-listviewManuallySetReportingLabel" class="video-popup" src="videos/listview-manuallySetReportingLabel.mp4" playsinline controls></video>
+            <p>The ReportingLabels are set based on a structure defined in your template json file, for example here:<br>"reportingLabel": "{Message}_{Cta}_{width}x{height}"</p>
+            <p>This label will not only be used when publishing ads to a AdServer feed, but also when downloading your ads it will be used as the filename.</p>
+            <p>In some cases where you might want to update a label without going back to template to adjust the taxonomy for the whole campaign, the ReportingLabel can be manually overwritten here.</p>
         </div>
     </div>
     <script src="js/ScrollTrigger.min.js"></script>

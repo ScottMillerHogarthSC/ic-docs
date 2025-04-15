@@ -18,6 +18,7 @@ var container       = getById("container"),
     blocks          = document.getElementsByClassName("block"),
     textareaCopy    = getById("example-textareacopy"),
     sections        = document.querySelectorAll(".section"),
+    videos          = document.querySelectorAll(".video-popup"),
 
 
     _speed = .5;
@@ -80,10 +81,16 @@ function bindListeners(){
                 .to("#example-editcopy02 .chars", {alpha:1,stagger:.1}, "<");
         }
 
-         if(which=="workflow"){
+        if(which=="workflow"){
             console.log(which);
             newTL.addLabel("workflow", "reset+=.5")
                 .to("#workflowFilters",.1,{alpha:1},"workflow")
+        }
+
+        if(which=="listView"){
+            console.log(which);
+            newTL.addLabel("listView", "reset+=.5")
+                .to("#listView",.1,{alpha:1},"listView")
         }
 
 
@@ -176,7 +183,18 @@ function bindListeners(){
     });
 
 
+    videos.forEach(ele => {
+        ele.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevents the click from bubbling up to overlay
+            // e.preventDefault();
+            playVideo(e.target.id);
+        });
+
+    })
+
     overlay.addEventListener("click", closePopup);
+
+
 }
 
 var isFirstLoad = true;
@@ -272,6 +290,9 @@ function initSplitTexts() {
 
 
 function showPopup(which) {
+
+    closePopup();
+
     tlPopups.clear();
 
     tlPopups.addLabel("reset", 0)
@@ -284,6 +305,10 @@ function showPopup(which) {
         .to("#popup-"+which, .3, {scale:1,ease:"power1.out"}, "reset")
 
     // if popup contains a video:
+    playVideo(which);
+}
+
+function playVideo(which) {
     var this_video;
     this_video = getById("video-"+which);
     if(this_video){
@@ -292,8 +317,6 @@ function showPopup(which) {
     } else {
         console.log("no video");
     }
-    
-
 }
 
 function closePopup(){

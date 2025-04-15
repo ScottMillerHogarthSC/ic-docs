@@ -135,7 +135,7 @@ h1 {
 }
 h2 {
     position: absolute;
-    transform: translate(0,-100%);
+    transform: translate(0,-101%);
     top: 0;
     font-size: 1.6em;
     margin: 0;
@@ -340,6 +340,42 @@ h3 {
     width: 5.25%;
     height: 5%;
 }
+#block-scaling {
+    top: 93.6%;
+    height: calc(100% - 93.6%);
+    left: 13.85%;
+    width: 11.8%;
+}
+#block-listView {
+    left: 90.9%;
+    top: 5%;
+    width: 7.6%;
+    height: 5.7%;
+}
+#block-adServerLink {
+    left: 41.3%;
+    top: 5.1%;
+    width: 7.2%;
+    height: 5.6%;
+}
+#block-publish {
+    left: 48.4%;
+    top: 5.1%;
+    width: 5.3%;
+    height: 5.6%;
+}
+#block-visibilty {
+    left: 53.7%;
+    top: 5.1%;
+    width: 5.7%;
+    height: 5.6%;
+}
+#block-productionStatus {
+    left: 59.4%;
+    top: 5.1%;
+    width: 9.9%;
+    height: 5.6%
+}
 
 /* ******************** Tooltips ************************* */
 
@@ -444,9 +480,37 @@ h3 {
 #text-workflow {
     left: 12.5%;
     top: 12%;
-    width: 12%;
 }
+#text-scaling {
+    left: 12.5%;
+    top: 80%;
+}
+#text-listView{
+    top: 10.7%;
+    left: auto;
+    right: 2%;
+    width: 17%;
+}
+#text-adServerLink {
+    top: 10%;
+    left: 40%;
+}
+#text-publish {
+    top: 10%;
+    left: 44%;
+    width: 17%;
+}
+#text-visibilty {
+    top: 10%;
+    left: 49%;
+    width: 23%;
+}
+#text-productionStatus {
+    top: 10%;
+    left: 59%;   
+    width: 20%;
 
+}
 
 
 
@@ -480,20 +544,23 @@ h3 {
 }
 .popup {
     z-index: 502;
-
     width: 50%;
     height: auto;
     position: relative;
-/*    display: flex;*/
+    /* display: flex
+; */
     display: none;
     padding: 2em;
+    max-height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background-color: rgba(55, 0, 55, 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, .9);
     color: #fff;
     border-radius: 1em;
     align-items: center;
     align-items: flex-start;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: row;
 }
 .popup-video {
@@ -658,4 +725,7 @@ h3 {
     top: 10.8%;
     left: 0;
     width: 13.67%;
+}
+#listView {
+    width: 100%;
 }
