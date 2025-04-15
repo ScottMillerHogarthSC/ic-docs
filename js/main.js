@@ -92,6 +92,22 @@ function bindListeners(){
             newTL.addLabel("listView", "reset+=.5")
                 .to("#listView",.1,{alpha:1},"listView")
         }
+        
+        if(which=="productionStatus"){
+            console.log(which);
+            newTL.addLabel("productionStatus", "reset+=.5")
+                .to("#productionStatus",.1,{alpha:1},"productionStatus")
+        }
+        if(which=="visibility"){
+            console.log(which);
+            newTL.addLabel("visibility", "reset+=.5")
+                .to("#visibility",.1,{alpha:1},"visibility")
+        }
+        if(which=="publish"){
+            console.log(which);
+            newTL.addLabel("publish", "reset+=.5")
+                .to("#publish",.1,{alpha:1},"publish")
+        }
 
 
         tls_Blocks[which] = newTL; // Store the TL in the object with 'which' as the key
