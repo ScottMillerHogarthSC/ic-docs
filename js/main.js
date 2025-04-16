@@ -93,22 +93,17 @@ function bindListeners(){
                 .to("#listView",.1,{alpha:1},"listView")
         }
         
-        if(which=="productionStatus"){
+        if(which=="productionStatus" 
+            || which=="visibility"
+            || which=="publish"
+            || which=="download"
+            || which=="review"
+            || which=="share"){
             console.log(which);
-            newTL.addLabel("productionStatus", "reset+=.5")
-                .to("#productionStatus",.1,{alpha:1},"productionStatus")
+            newTL.addLabel(which, "reset+=.5")
+                .to("#"+which,.1,{alpha:1},which)
         }
-        if(which=="visibility"){
-            console.log(which);
-            newTL.addLabel("visibility", "reset+=.5")
-                .to("#visibility",.1,{alpha:1},"visibility")
-        }
-        if(which=="publish"){
-            console.log(which);
-            newTL.addLabel("publish", "reset+=.5")
-                .to("#publish",.1,{alpha:1},"publish")
-        }
-
+        
 
         tls_Blocks[which] = newTL; // Store the TL in the object with 'which' as the key
 
@@ -148,6 +143,17 @@ function bindListeners(){
             clickedBlocks.add(which); // Mark this block as clicked
             showToolTip(which, true);
         });
+
+        
+        var closeBtn = document.createElement("div");
+        closeBtn.className="overlay-close abs";
+        closeBtn.addEventListener("click", () =>{
+            console.log(which+" close clicked");
+            event.stopPropagation(); // Prevents the click from bubbling up to .block
+
+            tls_Blocks[which].pause().seek("reset",false);
+        });
+        el.appendChild(closeBtn);
     });
 
 
@@ -167,6 +173,14 @@ function bindListeners(){
     });
 
 
+    // for each popup, add close buttons:
+    document.querySelectorAll(".popup").forEach(el => {
+        var closeBtn = document.createElement("div");
+        closeBtn.className="overlay-close abs";
+        el.appendChild(closeBtn);
+    });
+
+
     document.querySelectorAll(".site-link").forEach(a => {
         a.addEventListener("click", (e) => {
             e.preventDefault();
@@ -178,7 +192,7 @@ function bindListeners(){
                 scrollTo: a.getAttribute("href")
             });
         });
-    });
+    }); 
 
     ScrollTrigger.create({
         trigger: "#section-Assemble",
@@ -332,6 +346,17 @@ function playVideo(which) {
         this_video.play();
     } else {
         console.log("no video");
+
+        this_video = getById("vimeo-"+which);
+        if(this_video){
+
+            console.log("is vimeo");
+            var player = new Vimeo.Player(this_video);
+            player.getDuration().then(duration => {
+                console.log('Duration:', duration);
+                player.play();
+            });
+        }
     }
 }
 
