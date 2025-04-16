@@ -496,18 +496,18 @@ h3 {
     left: 40%;
 }
 #text-publish {
-    top: 10%;
+    top: 3%;
     left: 30%;
     width: 17%;
 }
 #text-visibility {
-    top: 10%;
-    left: 65.7%;
+    top: 3%;
+    left: 29.1%;
     width: 23%;
 }
 #text-productionStatus {
-    top: 10%;
-    left: 69%;   
+    top: 3%;
+    left: 68.8%;
     width: 20%;
 
 }
@@ -552,8 +552,6 @@ h3 {
     display: none;
     padding: 2em;
     max-height: 80vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
     background-color: rgba(55, 0, 55, 1);
     box-shadow: 0 0 10px rgba(0, 0, 0, .9);
     color: #fff;

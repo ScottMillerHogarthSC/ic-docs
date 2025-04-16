@@ -238,8 +238,10 @@
         </div>
         <div id="text-publish" class="abs text hidden">
             <h3>Publish selected ad versions</h3>
-            <p>Once you have made a selection in the list below, you can then click this button and choose from Google, Sizmek, Choreograph feeds or TikTok Ads Manager.</p>
-            <p>An xml feed will be generated, setup for the appropriate ad server, containing the version data of your selected versions.</p><p>Further versions can be selected and publishing again will add them to the same XML feed, or choose Rebuild feed to overwrite the XML with the new selection.</p>
+            <p>Once you have made a selection in the list below, you can then click this button to publish those ads to a feed.</p>
+            <p>An xml feed will be generated, setup for the appropriate ad server, containing the version data of your selected versions.</p>
+            <p>Further versions can be selected and publishing again will add them to the same XML feed, or choose Rebuild feed to overwrite the XML with the new selection.</p>
+            <p>See the process here: <a class="popup-link" id="popup-link-publishing">Publishing</a></p>
         </div>
         <div id="text-visibility" class="abs text hidden">
             <h3>Set Version Visibility</h3>
@@ -255,6 +257,7 @@
             <p>Making your filtered selection using the checkboxes on the left panel can be time consuming so once you have made it, it is recommended to then save that selection using the production status flag.</p>
             <p>Apply the filters, select all versions, then use this button to set status.</p>
             <p>You can then recall that selection using the Workflow filters on the lefthand panel.</p>
+            <p>Important to note that these status flags are reset when a Template is updated (replaced in the Master templates). As a solution to this problem you can also use <a class="popup-link" id="popup-link-additionalColumnFiltering">additional columns for filtering</a> as these values are preserved when templates are upadated.</p>
         </div>
         
     </div>
@@ -387,6 +390,22 @@
             <p>The ReportingLabels are set based on a structure defined in your template json file, for example here:<br>"reportingLabel": "{Message}_{Cta}_{width}x{height}"</p>
             <p>This label will not only be used when publishing ads to a AdServer feed, but also when downloading your ads it will be used as the filename.</p>
             <p>In some cases where you might want to update a label without going back to template to adjust the taxonomy for the whole campaign, the ReportingLabel can be manually overwritten here.</p>
+        </div>
+        <div id="popup-additionalColumnFiltering" class="popup popup-video">
+            <h3>Using Additional Columns for Filtering</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-additionalColumnFiltering" class="video-popup" src="videos/using-additional-column-for-status.mp4" playsinline controls></video>
+            <p>Due to the Production Status settings resetting when Template is changed (replaced in Master Templates or in Assemble view), a method to save and re-instate them, is to use the additional columns for statuses.</p>
+            <p>You can then filter using those and re-apply the status flags after a template change.</p>
+        </div>
+        <div id="popup-publishing" class="popup popup-video">
+            <h3>Publishing Versions to a Feed</h3>
+            <div class="overlay-close abs"><img src="images/close.svg"></div>
+            <video id="video-publishing" class="video-popup" src="videos/publishing.mp4" playsinline controls></video>
+            <p>Once you have made a selection in the list, you can then publish those ad versions for use in AdServing Platforms.</p>
+            <p>An xml feed will be generated, setup for the appropriate ad server, containing the version data of your selected versions.</p>
+            <p>Further versions can be selected and publishing again will add them to the same XML feed, or choose Rebuild feed to overwrite the XML with the new selection.</p>
+            <p>Once ad shells are downloaded and hosted in the AdServing platforms, these versions can be setup to serve within the Shells.</p>
         </div>
     </div>
     <script src="js/ScrollTrigger.min.js"></script>
