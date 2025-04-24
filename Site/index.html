@@ -273,10 +273,11 @@
         </div>
         <div id="text-review" class="abs text hidden">
             <h3>Review</h3>
-            <p></p>
+            <p>A review and approval workflow exists here, where users can annotate versions with comments and mark them as approved / changes required, however <b>currently we are recommending we do not use this part of the Assemble tool</b>.</p>
         </div>
         <div id="text-download" class="abs text hidden">
             <h3>Download</h3>
+            <p>Versions can be selected and downloaded in various formats, either for upload as Shells to AdServing platforms, or exported as mp4 videos, image assets, etc. See the process here:</p>
             <p><a class="popup-link" id="popup-link-downloadAds">Download ads</a></p>
         </div>
         
@@ -369,7 +370,8 @@
 
         <div id="popup-connectFeed" class="popup popup-video">
             <h3>Connect XML or JSON feed</h3>
-            <!-- <iframe id="vimeo-connectFeed" class="video-popup" src="https://player.vimeo.com/video/1076080863?h=26b6070408&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Using Additional Columns for Filtering"></iframe>-->
+            <iframe id="vimeo-connectFeed" class="video-popup" src="https://player.vimeo.com/video/1078240856?h=330c1f7115&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Connect XML or JSON feed"></iframe>
+            
             <p>Select either an external feed end point or local file. Connected Feeds are currently limited to either JSON or XML. Any key value pairs in the feed that match variable names in the Version will be automatically populated.</p>
             <p>A unique key must be chosen from the feed data at time of connecting. This key value will be used as the new Version name.</p>
             <p>Any variables that are not set from the feed will take the default values or if the version already exists, the existing data will be preserved.</p>
@@ -384,8 +386,9 @@
         <div id="popup-listviewAdditionalColumns" class="popup popup-video">
             <h3>Creative Library - List view - Additional Columns</h3>
             <iframe id="vimeo-listviewAdditionalColumns" class="video-popup" src="https://player.vimeo.com/video/1076080315?h=da0407674d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Using Additional Columns for Filtering"></iframe>
-            <p>You can add additional columns here.</p>
-            <p>The data in these will be reflected in the feed generated when versions are published. These are useful for adding, for example, Line Item IDs to versions. One issue with using these columns is that they will not be present in your Excel content feed, when doing <a class="popup-link" id="popup-link-feedImportGlobal_1">feed import/export</a> in Assemble view. They can currently be maintained in Creative Library list view only, not updated via a feed sheet.</p>
+            <p>It is possible to manually add additional columns, not included in the template.</p>
+            <p>The data in these will be reflected in the feed generated when versions are <a class="popup-link" id="popup-link-publishing_1">published</a>. These are useful for adding, for example, Line Item IDs to versions. One issue with using these columns is that they will not be present in your Excel content feed, when doing <a class="popup-link" id="popup-link-feedImportGlobal_1">feed import/export</a> in Assemble view. They can currently be maintained in Creative Library list view only, not updated via a feed sheet.</p>
+            <p>Another example of a use case for the additional columns is as an addition/alternative to using the Production status flags. As these flags do not persist when a template is updated and are limited to only 4 types, additional columns can be used instead: <a class="popup-link" id="popup-link-additionalColumnFiltering_1">additional columns for filtering</a></p>
         </div>
 
         <div id="popup-listviewShowCreativeValues" class="popup popup-video">
@@ -418,12 +421,15 @@
         </div>
         <div id="popup-downloadAds" class="popup popup-video">
             <h3>Download ads</h3>
-            <!-- <iframe id="vimeo-downloadAds" class="video-popup" src="https://player.vimeo.com/video/1076080863?h=26b6070408&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Using Additional Columns for Filtering"></iframe> -->
-            <p></p>
+            <iframe id="vimeo-downloadAds" class="video-popup" src="https://player.vimeo.com/video/1078240887?h=2d19ab2265&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Download Ads"></iframe>
+            <p>Assemble templates are intentionally adserver agnostic. This allows you to to download your ad versions for any adserver. You can select the adserver you need to upload to and the system will convert the HTML package with the necessary adjustments. ie. inserting the Enabler.js for DCS or adding clickTag functionality. In the popup you can select the "Changes overview" tab to see what changes are being applied by the platform, for each download type.</p>
+            <p>You can also choose to minify your code, images and fonts.</p>
+            <p>Important to note that minifying a font is not suggested when downloading your dynamic ad shells, as this feature creates a subset font with only the chars included in that version. Therefore when a new version is published and served through that shell the chars might be missing.</p>
+            <p>Images and videos can also be created for an ad download. The mp4 videos are a screen-recording of the ad version, loaded in Chromium and cropped trimmed based on the ad version.</p>
         </div>
         <div id="popup-previewLinks" class="popup popup-video">
             <h3>Generate Preview Links</h3>
-            <!-- <iframe id="vimeo-previewLinks" class="video-popup" src="https://player.vimeo.com/video/1076080863?h=26b6070408&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Using Additional Columns for Filtering"></iframe> -->
+            <iframe id="vimeo-previewLinks" class="video-popup" src="https://player.vimeo.com/video/1078240936?h=3ec8f6c27b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Share Preview Links"></iframe>
             <p></p>
             <p>When selecting in previews view, you may notice even if you have more versions selected only a maximum of 10 preview links are generated. There is a workaround for this by using list view: <a class="popup-link" id="popup-link-listviewLargeSelections" title="watch the video showing this process">Larger selections</a>.</p>
         </div>
